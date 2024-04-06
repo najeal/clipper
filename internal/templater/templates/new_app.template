@@ -1,0 +1,19 @@
+func NewApp(svc Service) *cli.App {
+    var app = &cli.App{
+        Name: "{{ .Name }}",
+        Usage: "{{ .Usage }}",
+        {{- if .Action}}
+        Action: func(cliCtx *cli.Context) error {
+            return svc.{{ .Action}}(cliCtx)
+        },
+        {{- end}}
+        {{- if .Commands}}
+        Commands: []*cli.Command{
+            {{- range $command := .Commands}}
+            {{include "CommandTemplate" $command | indent 12 | trim}}
+            {{- end}}
+        },
+        {{- end}}
+    }
+    return app
+}

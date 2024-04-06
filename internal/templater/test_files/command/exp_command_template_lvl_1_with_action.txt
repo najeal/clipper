@@ -1,0 +1,7 @@
+{
+    Name: "first",
+    Usage: "first usage",
+    Action: func(cliCtx *cli.Context) error {
+        return svc.First(cliCtx)
+    },
+},

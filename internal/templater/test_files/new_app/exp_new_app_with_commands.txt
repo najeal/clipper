@@ -1,0 +1,25 @@
+func NewApp(svc Service) *cli.App {
+    var app = &cli.App{
+        Name: "app",
+        Usage: "app usage",
+        Commands: []*cli.Command{
+            {
+                Name: "first",
+                Usage: "first usage",
+                Action: func(cliCtx *cli.Context) error {
+                    return svc.First(cliCtx)
+                },
+                SubCommands: []*cli.Command{
+                    {
+                        Name: "second",
+                        Usage: "second usage",
+                        Action: func(cliCtx *cli.Context) error {
+                            return svc.Second(cliCtx)
+                        },
+                    },
+                },
+            },
+        },
+    }
+    return app
+}
