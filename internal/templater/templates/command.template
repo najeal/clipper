@@ -1,0 +1,14 @@
+{
+    Name: "{{.Name}}",
+    Usage: "{{.Usage}}",
+    {{- if .Action }}
+    Action: func(cliCtx *cli.Context) error {
+        return svc.{{.Action}}(cliCtx)
+    },
+    {{- end }}
+    {{- if .SubCommands }}
+    SubCommands: []*cli.Command{
+        {{range $command := .SubCommands}}{{ include "CommandTemplate" $command | indent 8 | trim}}{{end}}
+    },
+    {{- end}}
+},

@@ -1,0 +1,10 @@
+func NewApp(svc Service) *cli.App {
+    var app = &cli.App{
+        Name: "app",
+        Usage: "app usage",
+        Action: func(cliCtx *cli.Context) error {
+            return svc.App(cliCtx)
+        },
+    }
+    return app
+}

@@ -1,0 +1,33 @@
+name: docker
+subCommands:
+  - name: volume
+    usage: docker volume management
+    subCommands:
+      - name: create
+        usage: docker volume create [OPTIONS] [VOLUME]
+      - name: list
+        aliases: ls
+        options:
+          - name: filter
+            aliases:
+              - f
+            usage: provide filter values
+            type: array
+            items:
+              type: string
+          - name: quiet
+            aliases:
+              - q
+            usage: only display volume names
+            type: bool
+      - name: rm
+        usage: |-
+          docker volume rm [OPTIONS] VOLUME [VOLUME...]
+          Remove one or more volumes. You cannot remove a volume that is in use by a container.
+        aliases:
+          - rm
+          - remove
+  - name: fake
+    usage: fake to try uint32 type
+    type: integer
+    format: uint32

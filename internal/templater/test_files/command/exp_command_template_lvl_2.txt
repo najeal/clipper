@@ -1,0 +1,10 @@
+{
+    Name: "first",
+    Usage: "first usage",
+    SubCommands: []*cli.Command{
+        {
+            Name: "second",
+            Usage: "second usage",
+        },
+    },
+},
