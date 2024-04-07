@@ -2,19 +2,3 @@ name: cp
 usage: cp is copying a file
 usageText: cp SRC_PATH DEST_PATH
 action: Copy
-minArgs: 2
-maxArgs: 2
-args:
-  - name: source_file
-  - name: target_file
-flags:
-  - name: force
-    aliases:
-      - f
-    type: bool
-    usage: If the destination file cannot be opened, remove it and create a new file
-  - name: verbose
-    aliases:
-      - v
-    type: bool
-    usage: Cause command to be verbose
