@@ -10,6 +10,9 @@ import (
 //go:embed test_files/command/exp_command_template_lvl_1.txt
 var expCommandTemplateLvl1 string
 
+//go:embed test_files/command/exp_command_with_flags.txt
+var expCommandWithFlagsTemplate string
+
 //go:embed test_files/command/exp_command_template_lvl_2.txt
 var expCommandTemplateLvl2 string
 
@@ -38,10 +41,44 @@ func TestGenerateCommandTemplate(t *testing.T) {
 				Usage:  "first usage",
 				Action: "First",
 			}
-			content, err := generateContent("CommandTemplate", commandTemplate, command)
+			content, err := generateContent("CommandTemplate", commandTemplate, command,
+				additionalTemplate{"StringFlagTemplate", stringFlagTemplate},
+				additionalTemplate{"BoolFlagTemplate", boolFlagTemplate},
+			)
 			require.NoError(t, err)
 			require.Equal(t, expCommandTemplateLvl1WithAction, string(content))
 		})
+	})
+	t.Run("CommandWithFlags", func(t *testing.T) {
+		command := Command{
+			Name:  "first",
+			Usage: "first usage",
+			Flags: []Flag{
+				{
+					Name:  "force",
+					Usage: "forcing stuff",
+					Type:  "bool",
+				},
+				{
+					Name:  "firstname",
+					Usage: "gives user first name",
+					Type:  "string",
+				},
+				{
+					Name:  "size",
+					Usage: "size info",
+					Type:  "int64",
+				},
+			},
+		}
+		content, err := generateContent("CommandTemplate", commandTemplate, command,
+			additionalTemplate{"FlagTemplate", flagTemplate},
+			additionalTemplate{"StringFlagTemplate", stringFlagTemplate},
+			additionalTemplate{"BoolFlagTemplate", boolFlagTemplate},
+			additionalTemplate{"Int64FlagTemplate", int64FlagTemplate},
+		)
+		require.NoError(t, err)
+		require.Equal(t, expCommandWithFlagsTemplate, string(content))
 	})
 	t.Run("CommandTwoLevel", func(t *testing.T) {
 		command := Command{

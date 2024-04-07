@@ -1,0 +1,11 @@
+&cli.Int64Flag{
+    Name: "size",
+    Usage: "size info",
+	Aliases: []string{
+        "s",
+    },
+	EnvVars: []string{
+        "F_SIZE",
+    },
+    Value: 4,
+},

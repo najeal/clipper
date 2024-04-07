@@ -8,6 +8,18 @@ import (
 	"github.com/Masterminds/sprig"
 )
 
+//go:embed templates/flags/flag.template
+var flagTemplate string
+
+//go:embed templates/flags/bool.template
+var boolFlagTemplate string
+
+//go:embed templates/flags/int64.template
+var int64FlagTemplate string
+
+//go:embed templates/flags/string.template
+var stringFlagTemplate string
+
 //go:embed templates/command.template
 var commandTemplate string
 
@@ -27,6 +39,10 @@ func GenerateContent(data Root) ([]byte, error) {
 	return generateContent("RootTemplate", rootTemplate, data,
 		additionalTemplate{"NewAppTemplate", newAppTemplate},
 		additionalTemplate{"CommandTemplate", commandTemplate},
+		additionalTemplate{"FlagTemplate", flagTemplate},
+		additionalTemplate{"StringFlagTemplate", stringFlagTemplate},
+		additionalTemplate{"BoolFlagTemplate", boolFlagTemplate},
+		additionalTemplate{"Int64FlagTemplate", int64FlagTemplate},
 	)
 }
 

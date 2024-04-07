@@ -1,0 +1,8 @@
+&cli.BoolFlag{
+    Name: "force",
+    Usage: "forcing stuff",
+	Aliases: []string{
+        "f",
+    },
+    Value: true,
+},

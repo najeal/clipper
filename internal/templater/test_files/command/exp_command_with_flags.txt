@@ -1,0 +1,18 @@
+{
+    Name: "first",
+    Usage: "first usage",
+    Flags: []cli.Flag{
+        &cli.BoolFlag{
+            Name: "force",
+            Usage: "forcing stuff",
+        },
+        &cli.StringFlag{
+            Name: "firstname",
+            Usage: "gives user first name",
+        },
+        &cli.Int64Flag{
+            Name: "size",
+            Usage: "size info",
+        },
+    },
+},
