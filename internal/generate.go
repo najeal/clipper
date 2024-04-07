@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+	"go/format"
 
 	"github.com/najeal/go-clipper/internal/specs"
 	"github.com/najeal/go-clipper/internal/templater"
@@ -19,9 +20,13 @@ func (*CliGenerator) Generate(inputFile []byte, packageName string) (outputFile 
 		return nil, err
 	}
 	templateRoot := transform(packageName, specs)
-	outputFile, err = templater.GenerateContent(templateRoot)
+	content, err := templater.GenerateContent(templateRoot)
 	if err != nil {
 		return nil, fmt.Errorf("failed to apply template on specs: %w", err)
 	}
-	return outputFile, nil
+	formatedContent, err := format.Source(content)
+	if err != nil {
+		return nil, fmt.Errorf("failed to format generated cli go code: %w", err)
+	}
+	return formatedContent, nil
 }
