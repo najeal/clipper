@@ -18,7 +18,27 @@ func generateAppFromRoot(in specs.Root) templater.App {
 		Name:     in.Name,
 		Usage:    in.Usage,
 		Action:   in.Action,
+		Flags:    generateFlagsFromFlags(in.Flags),
 		Commands: generateCommandsFromCommands(in.Commands),
+	}
+}
+
+func generateFlagsFromFlags(flags []specs.Flag) []templater.Flag {
+	tflags := make([]templater.Flag, 0, len(flags))
+	for _, flag := range flags {
+		tflags = append(tflags, generateFlagFromFlag(flag))
+	}
+	return tflags
+}
+
+func generateFlagFromFlag(flag specs.Flag) templater.Flag {
+	return templater.Flag{
+		Name:    flag.Name,
+		Type:    flag.Type,
+		Value:   flag.Value,
+		Usage:   flag.Usage,
+		Aliases: flag.Aliases,
+		EnvVars: flag.EnvVars,
 	}
 }
 
@@ -35,6 +55,7 @@ func generateCommandFromCommand(command specs.Command) templater.Command {
 		Name:        command.Name,
 		Usage:       command.Usage,
 		Action:      command.Action,
+		Flags:       generateFlagsFromFlags(command.Flags),
 		SubCommands: generateCommandsFromCommands(command.SubCommands),
 	}
 }
