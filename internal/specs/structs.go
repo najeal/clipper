@@ -9,6 +9,7 @@ type Root struct {
 	Usage     string    `yaml:"usage"`
 	UsageText string    `yaml:"usageText"`
 	Action    string    `yaml:"action"`
+	Flags     []Flag    `yaml:"flags"`
 	Commands  []Command `yaml:"commands"`
 }
 
@@ -16,7 +17,17 @@ type Command struct {
 	Name        string    `yaml:"name"`
 	Usage       string    `yaml:"usage"`
 	Action      string    `yaml:"action"`
+	Flags       []Flag    `yaml:"flags"`
 	SubCommands []Command `yaml:"commands"`
+}
+
+type Flag struct {
+	Name    string   `yaml:"name"`
+	Value   string   `yaml:"value"`
+	Type    string   `yaml:"type"`
+	Usage   string   `yaml:"usage"`
+	Aliases []string `yaml:"aliases"`
+	EnvVars []string `yaml:"envVars"`
 }
 
 func Unmarshal(in []byte) (Root, error) {

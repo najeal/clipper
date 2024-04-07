@@ -1,0 +1,19 @@
+name: cp
+usage: cp is copying a file
+usageText: cp SRC_PATH DEST_PATH
+action: Copy
+flags:
+  - name: force
+    type: bool
+    value: true
+    aliases:
+      - f
+    usage: If the destination file cannot be opened, remove it and create a new file
+    envVars:
+      - COPY_FORCE
+  - name: verbose
+    type: string
+    value: info
+    usage: choose verbosity
+  - name: age
+    type: int64

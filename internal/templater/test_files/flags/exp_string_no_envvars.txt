@@ -1,0 +1,8 @@
+&cli.StringFlag{
+    Name: "force",
+    Usage: "forcing stuff",
+	Aliases: []string{
+        "f",
+    },
+    Value: "forcing",
+},

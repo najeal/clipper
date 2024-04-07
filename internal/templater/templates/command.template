@@ -1,6 +1,13 @@
 {
     Name: "{{.Name}}",
     Usage: "{{.Usage}}",
+    {{- if .Flags}}
+    Flags: []cli.Flag{
+        {{- range $flag := .Flags }}
+        {{ include "FlagTemplate" $flag | indent 8 | trim}}
+        {{- end}}
+    },
+    {{- end}}
     {{- if .Action }}
     Action: func(cliCtx *cli.Context) error {
         return svc.{{.Action}}(cliCtx)

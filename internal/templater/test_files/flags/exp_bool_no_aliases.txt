@@ -1,0 +1,8 @@
+&cli.BoolFlag{
+    Name: "force",
+    Usage: "forcing stuff",
+	EnvVars: []string{
+        "CP_FORCE",
+    },
+    Value: true,
+},
