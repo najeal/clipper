@@ -1,0 +1,17 @@
+name: subcommand-manager
+commands:
+  - name: add
+    usage: add a task to the list
+    action: Add
+  - name: complete
+    usage: complete a task on the list
+    action: Complete
+  - name: template
+    usage: options for task templates
+    commands:
+      - name: add
+        usage: add a new template
+        action: TemplateAdd
+      - name: remove
+        usage: remove an existing template
+        action: TemplateRemove
