@@ -6,4 +6,10 @@ Clipper works on top of [urfave/cli](https://github.com/urfave/cli).<br>
 - You implement the generated interface.
 
 # Getting started
-Coming soon
+
+## Install Clipper:
+```go install github.com/najeal/clipper/cmd/clipper@latest```
+
+## Take a look to the examples
+- [greet](examples/greet/README.md)
+- [subcommands](examples/subcommands//README.md)
