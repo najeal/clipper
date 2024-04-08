@@ -1,0 +1,4 @@
+name: greet
+usage: fight the loneliness!
+usageText: greet
+action: Greet
