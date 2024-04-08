@@ -1,4 +1,4 @@
-module github.com/najeal/go-clipper
+module github.com/najeal/clipper
 
 go 1.21.0
 
