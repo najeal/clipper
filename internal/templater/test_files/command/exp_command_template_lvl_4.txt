@@ -1,15 +1,15 @@
 {
     Name: "first",
     Usage: "first usage",
-    SubCommands: []*cli.Command{
+    Subcommands: []*cli.Command{
         {
             Name: "second",
             Usage: "second usage",
-            SubCommands: []*cli.Command{
+            Subcommands: []*cli.Command{
                 {
                     Name: "third",
                     Usage: "third usage",
-                    SubCommands: []*cli.Command{
+                    Subcommands: []*cli.Command{
                         {
                             Name: "fourth",
                             Usage: "fourth usage",

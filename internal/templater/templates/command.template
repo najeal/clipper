@@ -14,7 +14,7 @@
     },
     {{- end }}
     {{- if .SubCommands }}
-    SubCommands: []*cli.Command{
+    Subcommands: []*cli.Command{
         {{range $command := .SubCommands}}{{ include "CommandTemplate" $command | indent 8 | trim}}{{end}}
     },
     {{- end}}
