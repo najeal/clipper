@@ -1,7 +1,7 @@
 {
     Name: "first",
     Usage: "first usage",
-    SubCommands: []*cli.Command{
+    Subcommands: []*cli.Command{
         {
             Name: "second",
             Usage: "second usage",
