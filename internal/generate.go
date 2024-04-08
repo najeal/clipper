@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"go/format"
 
-	"github.com/najeal/go-clipper/internal/specs"
-	"github.com/najeal/go-clipper/internal/templater"
+	"github.com/najeal/clipper/internal/specs"
+	"github.com/najeal/clipper/internal/templater"
 )
 
 func NewCliGenerator() *CliGenerator {

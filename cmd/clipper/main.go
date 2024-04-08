@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	pkg "github.com/najeal/go-clipper/internal"
+	pkg "github.com/najeal/clipper/internal"
 	"github.com/urfave/cli/v2"
 )
 

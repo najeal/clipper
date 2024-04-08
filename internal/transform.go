@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"github.com/najeal/go-clipper/internal/specs"
-	"github.com/najeal/go-clipper/internal/templater"
+	"github.com/najeal/clipper/internal/specs"
+	"github.com/najeal/clipper/internal/templater"
 )
 
 func transform(packageName string, in specs.Root) templater.Root {

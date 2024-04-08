@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/najeal/go-clipper/examples/greet/gen"
+	"github.com/najeal/clipper/examples/greet/gen"
 	"github.com/urfave/cli/v2"
 )
 
