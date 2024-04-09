@@ -1,0 +1,7 @@
+name: flag-manager
+action: Run
+flags:
+  - name: lang
+    type: string
+    value: english
+    usage: language for the greeting
