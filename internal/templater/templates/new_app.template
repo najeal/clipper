@@ -7,6 +7,13 @@ func NewApp(svc Service) *cli.App {
             return svc.{{ .Action}}(cliCtx)
         },
         {{- end}}
+        {{- if .Flags}}
+        Flags: []cli.Flag{
+            {{- range $flag := .Flags }}
+            {{ include "FlagTemplate" $flag | indent 12 | trim}}
+            {{- end}}
+        },
+        {{- end}}
         {{- if .Commands}}
         Commands: []*cli.Command{
             {{- range $command := .Commands}}
