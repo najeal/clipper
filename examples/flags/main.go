@@ -24,9 +24,9 @@ func (*Service) Run(cCtx *cli.Context) error {
 		name = cCtx.Args().Get(0)
 	}
 	if cCtx.String("lang") == "spanish" {
-		fmt.Println("Hola", name)
+		fmt.Fprintln(os.Stdout, "Hola", name)
 	} else {
-		fmt.Println("Hello", name)
+		fmt.Fprintln(os.Stdout, "Hello", name)
 	}
 	return nil
 }
