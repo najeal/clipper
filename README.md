@@ -12,4 +12,5 @@ Clipper works on top of [urfave/cli](https://github.com/urfave/cli).<br>
 
 ## Take a look to the examples
 - [greet](examples/greet/README.md)
-- [subcommands](examples/subcommands//README.md)
+- [subcommands](examples/subcommands/README.md)
+- [flags](examples/flags/README.md)
