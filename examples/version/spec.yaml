@@ -1,0 +1,10 @@
+name: greet
+version: v0.1.0
+versionFlag:
+  name: version-print
+  usage: printing the version
+  aliases:
+   - p
+usage: fight the loneliness!
+usageText: greet
+action: Greet
