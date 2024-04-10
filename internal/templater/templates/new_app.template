@@ -1,6 +1,9 @@
 func NewApp(svc Service) *cli.App {
     var app = &cli.App{
         Name: "{{ .Name }}",
+        {{- if .Version}}
+        Version: Version,
+        {{- end}}
         Usage: "{{ .Usage }}",
         {{- if .Action}}
         Action: func(cliCtx *cli.Context) error {

@@ -10,5 +10,15 @@ type Service interface{
     {{$method_name }}(*cli.Context) error
     {{- end}}
 }
+{{- if .Version}}
+
+var (
+    Version = "{{.Version}}"
+)
+
+func init() {
+    cli.VersionFlag = {{include "BoolFlagTemplate" .VersionFlag | indent 4 | trim }}
+}
+{{- end}}
 
 {{include "NewAppTemplate" .App}}

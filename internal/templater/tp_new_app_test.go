@@ -19,6 +19,9 @@ var expNewAppWithCommands string
 //go:embed test_files/new_app/exp_new_app_with_flags.txt
 var expNewAppWithFlags string
 
+//go:embed test_files/new_app/exp_new_app_with_version.txt
+var expNewAppWithVersion string
+
 func TestGenerateNewAppTemplate(t *testing.T) {
 	t.Run("Root", func(t *testing.T) {
 		app := App{
@@ -29,6 +32,17 @@ func TestGenerateNewAppTemplate(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t, expNewApp, string(content))
 	})
+	t.Run("WithVersion", func(t *testing.T) {
+		app := App{
+			Name:    "withversion",
+			Usage:   "using version flag",
+			Version: true,
+		}
+		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
+		require.NoError(t, err)
+		require.Equal(t, expNewAppWithVersion, string(content))
+	})
+
 	t.Run("WithAction", func(t *testing.T) {
 		app := App{
 			Name:   "app",
