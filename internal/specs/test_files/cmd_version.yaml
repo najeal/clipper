@@ -1,0 +1,10 @@
+name: cp
+version: v0.1.0
+versionFlag:
+  name: print-version
+  usage: ""
+  aliases:
+    - v
+usage: cp is copying a file
+usageText: cp SRC_PATH DEST_PATH
+action: Copy

@@ -1,10 +1,10 @@
 &cli.StringFlag{
     Name: "force",
     Usage: "forcing stuff",
-	Aliases: []string{
+    Aliases: []string{
         "f",
     },
 	EnvVars: []string{
         "CP_FORCE",
     },
-},
+}

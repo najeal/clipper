@@ -8,14 +8,34 @@ import (
 func transform(packageName string, in specs.Root) templater.Root {
 	return templater.Root{
 		PackageName: packageName,
+		Version:     in.Version,
+		VersionFlag: generateVersionFlag(in.VersionFlag),
 		Methods:     generateMethodsFromRoot(in),
 		App:         generateAppFromRoot(in),
+	}
+}
+
+func generateVersionFlag(vflag specs.Flag) templater.Flag {
+	name := "version"
+	if vflag.Name != "" {
+		name = vflag.Name
+	}
+	usage := "print version"
+	if vflag.Usage != "" {
+		usage = vflag.Usage
+	}
+	aliases := vflag.Aliases
+	return templater.Flag{
+		Name:    name,
+		Usage:   usage,
+		Aliases: aliases,
 	}
 }
 
 func generateAppFromRoot(in specs.Root) templater.App {
 	return templater.App{
 		Name:     in.Name,
+		Version:  in.Version != "",
 		Usage:    in.Usage,
 		Action:   in.Action,
 		Flags:    generateFlagsFromFlags(in.Flags),

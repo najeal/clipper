@@ -5,12 +5,14 @@ import (
 )
 
 type Root struct {
-	Name      string    `yaml:"name"`
-	Usage     string    `yaml:"usage"`
-	UsageText string    `yaml:"usageText"`
-	Action    string    `yaml:"action"`
-	Flags     []Flag    `yaml:"flags"`
-	Commands  []Command `yaml:"commands"`
+	Name        string    `yaml:"name"`
+	Version     string    `yaml:"version"`
+	VersionFlag Flag      `yaml:"versionFlag"`
+	Usage       string    `yaml:"usage"`
+	UsageText   string    `yaml:"usageText"`
+	Action      string    `yaml:"action"`
+	Flags       []Flag    `yaml:"flags"`
+	Commands    []Command `yaml:"commands"`
 }
 
 type Command struct {
