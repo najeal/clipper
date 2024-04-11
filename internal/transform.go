@@ -1,6 +1,9 @@
 package pkg
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/najeal/clipper/internal/specs"
 	"github.com/najeal/clipper/internal/templater"
 )
@@ -12,7 +15,20 @@ func transform(packageName string, in specs.Root) templater.Root {
 		VersionFlag: generateVersionFlag(in.VersionFlag),
 		Methods:     generateMethodsFromRoot(in),
 		App:         generateAppFromRoot(in),
+		Exits:       generateExitsFromExits(in.ExitCodes),
 	}
+}
+
+func generateExitsFromExits(exits map[string]specs.ExitCode) []templater.Exit {
+	res := make([]templater.Exit, 0, len(exits))
+	for name, exit := range exits {
+		res = append(res, templater.Exit{
+			VarName: fmt.Sprintf("Exit%s", strings.Title(name)),
+			Message: exit.Message,
+			Code:    exit.Code,
+		})
+	}
+	return res
 }
 
 func generateVersionFlag(vflag specs.Flag) templater.Flag {

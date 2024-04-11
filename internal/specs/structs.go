@@ -5,14 +5,20 @@ import (
 )
 
 type Root struct {
-	Name        string    `yaml:"name"`
-	Version     string    `yaml:"version"`
-	VersionFlag Flag      `yaml:"versionFlag"`
-	Usage       string    `yaml:"usage"`
-	UsageText   string    `yaml:"usageText"`
-	Action      string    `yaml:"action"`
-	Flags       []Flag    `yaml:"flags"`
-	Commands    []Command `yaml:"commands"`
+	Name        string              `yaml:"name"`
+	Version     string              `yaml:"version"`
+	VersionFlag Flag                `yaml:"versionFlag"`
+	Usage       string              `yaml:"usage"`
+	UsageText   string              `yaml:"usageText"`
+	Action      string              `yaml:"action"`
+	Flags       []Flag              `yaml:"flags"`
+	Commands    []Command           `yaml:"commands"`
+	ExitCodes   map[string]ExitCode `yaml:"exitCodes"`
+}
+
+type ExitCode struct {
+	Message string `yaml:"message"`
+	Code    int    `yaml:"code"`
 }
 
 type Command struct {

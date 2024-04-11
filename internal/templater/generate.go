@@ -8,6 +8,9 @@ import (
 	"github.com/Masterminds/sprig"
 )
 
+//go:embed templates/exit.template
+var exitTemplate string
+
 //go:embed templates/flags/flag.template
 var flagTemplate string
 
@@ -43,6 +46,7 @@ func GenerateContent(data Root) ([]byte, error) {
 		additionalTemplate{"StringFlagTemplate", stringFlagTemplate},
 		additionalTemplate{"BoolFlagTemplate", boolFlagTemplate},
 		additionalTemplate{"Int64FlagTemplate", int64FlagTemplate},
+		additionalTemplate{"ExitTemplate", exitTemplate},
 	)
 }
 

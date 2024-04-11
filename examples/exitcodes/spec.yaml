@@ -1,0 +1,10 @@
+name: flag-manager
+action: Run
+flags:
+  - name: ginger-crouton
+    type: bool
+    usage: is it in the soup?
+exitCodes:
+  noGingerCrouton:
+    message: Ginger croutons are not in the soup
+    code: 86
