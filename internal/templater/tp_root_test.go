@@ -16,6 +16,9 @@ var expRootComplete string
 //go:embed test_files/root/exp_root_with_version.txt
 var expRootWithVersion string
 
+//go:embed test_files/root/exp_root_with_exits.txt
+var expRootWithExits string
+
 func TestGenerateRootTemplate(t *testing.T) {
 	t.Run("Root", func(t *testing.T) {
 		app := Root{
@@ -26,6 +29,31 @@ func TestGenerateRootTemplate(t *testing.T) {
 			additionalTemplate{"NewAppTemplate", newAppTemplate}, additionalTemplate{"CommandTemplate", commandTemplate})
 		require.NoError(t, err)
 		require.Equal(t, expRoot, string(content))
+	})
+	t.Run("WithExits", func(t *testing.T) {
+		app := Root{
+			PackageName: "genroot",
+			App:         App{},
+			Exits: []Exit{
+				{
+					VarName: "ExitUserNotFound",
+					Message: "user has not been found",
+					Code:    1,
+				},
+				{
+					VarName: "ExitTVNotFound",
+					Message: "tv has not been found",
+					Code:    2,
+				},
+			},
+		}
+		content, err := generateContent("RootTemplate", rootTemplate, app,
+			additionalTemplate{"NewAppTemplate", newAppTemplate},
+			additionalTemplate{"CommandTemplate", commandTemplate},
+			additionalTemplate{"ExitTemplate", exitTemplate},
+		)
+		require.NoError(t, err)
+		require.Equal(t, expRootWithExits, string(content))
 	})
 	t.Run("RootWithVersion", func(t *testing.T) {
 		app := Root{

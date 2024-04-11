@@ -6,6 +6,7 @@ type Root struct {
 	Version     string
 	VersionFlag Flag
 	App         App
+	Exits       []Exit
 }
 
 type App struct {
@@ -36,4 +37,10 @@ type Flag struct {
 	Usage   string
 	Aliases []string
 	EnvVars []string
+}
+
+type Exit struct {
+	VarName string
+	Message string
+	Code    int
 }
