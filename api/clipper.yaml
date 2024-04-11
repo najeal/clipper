@@ -1,0 +1,12 @@
+name: clipper
+version: 0.1.0
+usage: clipper generates cli from manifest
+usageText: clipper SPECS_SRC_PATH > DEST_GO_FILE_PATH
+action: Run
+exitCodes:
+  readManifestFailed:
+    code: 1
+    message: failed to read manifest
+  cliGenerationFailed:
+    code: 2
+    message: failed to generate cli
