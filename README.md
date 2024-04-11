@@ -16,6 +16,10 @@ Developper implements interface declared by Clipper.
 - [exitcodes](examples/exitcodes/README.md)
 - [version](examples/version/README.md)
 
+## Take a look on the Wiki
+The [Wiki](https://github.com/najeal/clipper/wiki) contains the manifest data types details
+
+## Manifest usage preview
 Below you can see a manifest **Clipper** will use as input, then the main.go file the developper will focus on:
 ```
 name: greet
