@@ -1,10 +1,22 @@
 # Welcome to Clipper
 
 Clipper works on top of [urfave/cli](https://github.com/urfave/cli).<br>
-- You declare cli into a yaml file just like specification.
-- Clipper loads the file then initializes the urfave `*cli.App` and declares one interface.
-- You implement the generated interface.
+It generates the go code cli declaration from manifest.
+Developper implements interface declared by Clipper.
 
+# Getting started
+
+## Install Clipper:
+```go install github.com/najeal/clipper/cmd/clipper@latest```
+
+## Take a look to the examples
+- [greet](examples/greet/README.md)
+- [subcommands](examples/subcommands/README.md)
+- [flags](examples/flags/README.md)
+- [exitcodes](examples/exitcodes/README.md)
+- [version](examples/version/README.md)
+
+Below you can see a manifest **Clipper** will use as input, then the main.go file the developper will focus on:
 ```
 name: greet
 version: v0.1.0
@@ -28,9 +40,8 @@ exitCodes:
   missingForce:
     code: 4
     message: force flag is not set
-
 ```
-
+main.go:
 ```
 func main() {
 	app := gen.NewApp(&Service{})
@@ -55,14 +66,4 @@ func (*Service) Check(ctx *cli.Context) error {
 }
 ```
 
-# Getting started
 
-## Install Clipper:
-```go install github.com/najeal/clipper/cmd/clipper@latest```
-
-## Take a look to the examples
-- [greet](examples/greet/README.md)
-- [subcommands](examples/subcommands/README.md)
-- [flags](examples/flags/README.md)
-- [exitcodes](examples/exitcodes/README.md)
-- [version](examples/version/README.md)
