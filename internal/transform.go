@@ -50,12 +50,13 @@ func generateVersionFlag(vflag specs.Flag) templater.Flag {
 
 func generateAppFromRoot(in specs.Root) templater.App {
 	return templater.App{
-		Name:     in.Name,
-		Version:  in.Version != "",
-		Usage:    in.Usage,
-		Action:   in.Action,
-		Flags:    generateFlagsFromFlags(in.Flags),
-		Commands: generateCommandsFromCommands(in.Commands),
+		Name:      in.Name,
+		Version:   in.Version != "",
+		Copyright: in.Copyright,
+		Usage:     in.Usage,
+		Action:    in.Action,
+		Flags:     generateFlagsFromFlags(in.Flags),
+		Commands:  generateCommandsFromCommands(in.Commands),
 	}
 }
 

@@ -10,10 +10,11 @@ type Root struct {
 }
 
 type App struct {
-	Name    string
-	Version bool
-	Usage   string
-	Flags   []Flag
+	Name      string
+	Version   bool
+	Copyright string
+	Usage     string
+	Flags     []Flag
 	// Action is the service method to call
 	// if empty, calling the command will display the helper
 	Action   string

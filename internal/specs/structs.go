@@ -8,6 +8,7 @@ type Root struct {
 	Name        string              `yaml:"name"`
 	Version     string              `yaml:"version"`
 	VersionFlag Flag                `yaml:"versionFlag"`
+	Copyright   string              `yaml:"copyright"`
 	Usage       string              `yaml:"usage"`
 	UsageText   string              `yaml:"usageText"`
 	Action      string              `yaml:"action"`

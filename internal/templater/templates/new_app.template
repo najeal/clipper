@@ -4,6 +4,9 @@ func NewApp(svc Service) *cli.App {
         {{- if .Version}}
         Version: Version,
         {{- end}}
+        {{- if .Copyright}}
+        Copyright: "{{.Copyright}}",
+        {{- end}}
         Usage: "{{ .Usage }}",
         {{- if .Action}}
         Action: func(cliCtx *cli.Context) error {
