@@ -30,9 +30,10 @@ func init() {
 
 func NewApp(svc Service) *cli.App {
 	var app = &cli.App{
-		Name:    "greet",
-		Version: Version,
-		Usage:   "fight the loneliness!",
+		Name:      "greet",
+		Version:   Version,
+		Copyright: "(c) 2024 Clipper",
+		Usage:     "fight the loneliness!",
 		Action: func(cliCtx *cli.Context) error {
 			return svc.Greet(cliCtx)
 		},
