@@ -22,6 +22,9 @@ var expNewAppWithFlags string
 //go:embed test_files/new_app/exp_new_app_with_version.txt
 var expNewAppWithVersion string
 
+//go:embed test_files/new_app/exp_new_app_with_copyright.txt
+var expNewAppWithCopyright string
+
 func TestGenerateNewAppTemplate(t *testing.T) {
 	t.Run("Root", func(t *testing.T) {
 		app := App{
@@ -41,6 +44,16 @@ func TestGenerateNewAppTemplate(t *testing.T) {
 		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
 		require.NoError(t, err)
 		require.Equal(t, expNewAppWithVersion, string(content))
+	})
+	t.Run("WithCopyright", func(t *testing.T) {
+		app := App{
+			Name:      "withversion",
+			Usage:     "using version flag",
+			Copyright: "(c) 2024 Clipper",
+		}
+		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
+		require.NoError(t, err)
+		require.Equal(t, expNewAppWithCopyright, string(content))
 	})
 
 	t.Run("WithAction", func(t *testing.T) {

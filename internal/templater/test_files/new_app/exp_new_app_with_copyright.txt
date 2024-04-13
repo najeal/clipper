@@ -1,0 +1,8 @@
+func NewApp(svc Service) *cli.App {
+    var app = &cli.App{
+        Name: "withversion",
+        Copyright: "(c) 2024 Clipper",
+        Usage: "using version flag",
+    }
+    return app
+}
