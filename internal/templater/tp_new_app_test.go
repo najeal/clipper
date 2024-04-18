@@ -25,6 +25,9 @@ var expNewAppWithVersion string
 //go:embed test_files/new_app/exp_new_app_with_copyright.txt
 var expNewAppWithCopyright string
 
+//go:embed test_files/new_app/exp_new_app_with_short_option_handling.txt
+var expNewAppWithShortOptionHandling string
+
 func TestGenerateNewAppTemplate(t *testing.T) {
 	t.Run("Root", func(t *testing.T) {
 		app := App{
@@ -34,6 +37,16 @@ func TestGenerateNewAppTemplate(t *testing.T) {
 		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
 		require.NoError(t, err)
 		require.Equal(t, expNewApp, string(content))
+	})
+	t.Run("WithShortOptionHandling", func(t *testing.T) {
+		app := App{
+			Name:                   "withShortOptionHandling",
+			Usage:                  "using version flag",
+			UseShortOptionHandling: true,
+		}
+		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
+		require.NoError(t, err)
+		require.Equal(t, expNewAppWithShortOptionHandling, string(content))
 	})
 	t.Run("WithVersion", func(t *testing.T) {
 		app := App{

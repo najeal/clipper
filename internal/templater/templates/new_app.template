@@ -20,6 +20,9 @@ func NewApp(svc Service) *cli.App {
             {{- end}}
         },
         {{- end}}
+        {{- if .UseShortOptionHandling}}
+        UseShortOptionHandling: {{.UseShortOptionHandling}},
+        {{- end}}
         {{- if .Commands}}
         Commands: []*cli.Command{
             {{- range $command := .Commands}}

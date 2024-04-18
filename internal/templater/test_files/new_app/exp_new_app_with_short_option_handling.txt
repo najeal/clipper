@@ -1,0 +1,8 @@
+func NewApp(svc Service) *cli.App {
+    var app = &cli.App{
+        Name: "withShortOptionHandling",
+        Usage: "using version flag",
+        UseShortOptionHandling: true,
+    }
+    return app
+}

@@ -17,8 +17,9 @@ type App struct {
 	Flags     []Flag
 	// Action is the service method to call
 	// if empty, calling the command will display the helper
-	Action   string
-	Commands []Command
+	Action                 string
+	UseShortOptionHandling bool
+	Commands               []Command
 }
 
 type Command struct {
