@@ -9,6 +9,7 @@ copyright: (c) 2024 Clipper
 usage: fight the loneliness!
 usageText: greet
 action: Greet
+useShortOptionHandling: true
 commands:
   - name: check
     usage: check flag value
