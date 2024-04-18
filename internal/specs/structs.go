@@ -5,16 +5,17 @@ import (
 )
 
 type Root struct {
-	Name        string              `yaml:"name"`
-	Version     string              `yaml:"version"`
-	VersionFlag Flag                `yaml:"versionFlag"`
-	Copyright   string              `yaml:"copyright"`
-	Usage       string              `yaml:"usage"`
-	UsageText   string              `yaml:"usageText"`
-	Action      string              `yaml:"action"`
-	Flags       []Flag              `yaml:"flags"`
-	Commands    []Command           `yaml:"commands"`
-	ExitCodes   map[string]ExitCode `yaml:"exitCodes"`
+	Name                   string              `yaml:"name"`
+	Version                string              `yaml:"version"`
+	VersionFlag            Flag                `yaml:"versionFlag"`
+	Copyright              string              `yaml:"copyright"`
+	Usage                  string              `yaml:"usage"`
+	UsageText              string              `yaml:"usageText"`
+	Action                 string              `yaml:"action"`
+	Flags                  []Flag              `yaml:"flags"`
+	UseShortOptionHandling bool                `yaml:"useShortOptionHandling"`
+	Commands               []Command           `yaml:"commands"`
+	ExitCodes              map[string]ExitCode `yaml:"exitCodes"`
 }
 
 type ExitCode struct {
