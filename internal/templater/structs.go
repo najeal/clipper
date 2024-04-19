@@ -18,6 +18,7 @@ type App struct {
 	// Action is the service method to call
 	// if empty, calling the command will display the helper
 	Action                 string
+	EnableBashCompletion   bool
 	UseShortOptionHandling bool
 	Commands               []Command
 }
