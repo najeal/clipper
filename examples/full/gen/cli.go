@@ -37,6 +37,7 @@ func NewApp(svc Service) *cli.App {
 		Action: func(cliCtx *cli.Context) error {
 			return svc.Greet(cliCtx)
 		},
+		EnableBashCompletion:   true,
 		UseShortOptionHandling: true,
 		Commands: []*cli.Command{
 			{
