@@ -1,4 +1,5 @@
 name: cp
 usage: cp is copying a file
 usageText: cp SRC_PATH DEST_PATH
+enableBashCompletion: true
 action: Copy
