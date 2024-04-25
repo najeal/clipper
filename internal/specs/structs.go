@@ -14,6 +14,7 @@ type Root struct {
 	Action                 string              `yaml:"action"`
 	Flags                  []Flag              `yaml:"flags"`
 	UseShortOptionHandling bool                `yaml:"useShortOptionHandling"`
+	EnableBashCompletion   bool                `yaml:"enableBashCompletion"`
 	Commands               []Command           `yaml:"commands"`
 	ExitCodes              map[string]ExitCode `yaml:"exitCodes"`
 }

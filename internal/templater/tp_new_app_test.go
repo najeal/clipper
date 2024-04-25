@@ -28,6 +28,9 @@ var expNewAppWithCopyright string
 //go:embed test_files/new_app/exp_new_app_with_short_option_handling.txt
 var expNewAppWithShortOptionHandling string
 
+//go:embed test_files/new_app/exp_new_app_with_bash_completion.txt
+var expNewAppWithBashCompletion string
+
 func TestGenerateNewAppTemplate(t *testing.T) {
 	t.Run("Root", func(t *testing.T) {
 		app := App{
@@ -37,6 +40,16 @@ func TestGenerateNewAppTemplate(t *testing.T) {
 		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
 		require.NoError(t, err)
 		require.Equal(t, expNewApp, string(content))
+	})
+	t.Run("WithBashCompletion", func(t *testing.T) {
+		app := App{
+			Name:                 "withBashCompletionHandling",
+			Usage:                "using version flag",
+			EnableBashCompletion: true,
+		}
+		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
+		require.NoError(t, err)
+		require.Equal(t, expNewAppWithBashCompletion, string(content))
 	})
 	t.Run("WithShortOptionHandling", func(t *testing.T) {
 		app := App{

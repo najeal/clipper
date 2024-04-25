@@ -57,6 +57,7 @@ func generateAppFromRoot(in specs.Root) templater.App {
 		Action:                 in.Action,
 		Flags:                  generateFlagsFromFlags(in.Flags),
 		UseShortOptionHandling: in.UseShortOptionHandling,
+		EnableBashCompletion:   in.EnableBashCompletion,
 		Commands:               generateCommandsFromCommands(in.Commands),
 	}
 }

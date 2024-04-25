@@ -19,10 +19,11 @@ func TestUnmarshal(t *testing.T) {
 		root, err := unmarshalRoot([]byte(cmd1))
 		require.NoError(t, err)
 		require.Equal(t, Root{
-			Name:      "cp",
-			Usage:     "cp is copying a file",
-			UsageText: "cp SRC_PATH DEST_PATH",
-			Action:    "Copy",
+			Name:                 "cp",
+			Usage:                "cp is copying a file",
+			UsageText:            "cp SRC_PATH DEST_PATH",
+			EnableBashCompletion: true,
+			Action:               "Copy",
 		}, root)
 	})
 	t.Run("CmdFlags", func(t *testing.T) {
