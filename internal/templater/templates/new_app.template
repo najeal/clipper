@@ -7,6 +7,16 @@ func NewApp(svc Service) *cli.App {
         {{- if .Copyright}}
         Copyright: "{{.Copyright}}",
         {{- end}}
+        {{- if .Authors}}
+        Authors: []*cli.Author{
+            {{- range $author := .Authors}}
+            &cli.Author{
+                Name: "{{$author.Name}}",
+                Email: "{{$author.Email}}",
+            },
+            {{- end}}
+        },
+        {{- end }}
         Usage: "{{ .Usage }}",
         {{- if .Action}}
         Action: func(cliCtx *cli.Context) error {

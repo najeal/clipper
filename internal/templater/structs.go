@@ -13,6 +13,7 @@ type App struct {
 	Name      string
 	Version   bool
 	Copyright string
+	Authors   []Author
 	Usage     string
 	Flags     []Flag
 	// Action is the service method to call
@@ -46,4 +47,9 @@ type Exit struct {
 	VarName string
 	Message string
 	Code    int
+}
+
+type Author struct {
+	Name  string
+	Email string
 }

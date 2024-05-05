@@ -1,0 +1,13 @@
+func NewApp(svc Service) *cli.App {
+    var app = &cli.App{
+        Name: "withAuthors",
+        Authors: []*cli.Author{
+            &cli.Author{
+                Name: "george",
+                Email: "george@company.com",
+            },
+        },
+        Usage: "using authors",
+    }
+    return app
+}

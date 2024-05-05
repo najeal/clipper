@@ -31,6 +31,9 @@ var expNewAppWithShortOptionHandling string
 //go:embed test_files/new_app/exp_new_app_with_bash_completion.txt
 var expNewAppWithBashCompletion string
 
+//go:embed test_files/new_app/exp_new_app_with_authors.txt
+var expNewAppWithAuthors string
+
 func TestGenerateNewAppTemplate(t *testing.T) {
 	t.Run("Root", func(t *testing.T) {
 		app := App{
@@ -50,6 +53,19 @@ func TestGenerateNewAppTemplate(t *testing.T) {
 		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
 		require.NoError(t, err)
 		require.Equal(t, expNewAppWithBashCompletion, string(content))
+	})
+
+	t.Run("WithAuthors", func(t *testing.T) {
+		app := App{
+			Name:  "withAuthors",
+			Usage: "using authors",
+			Authors: []Author{
+				{"george", "george@company.com"},
+			},
+		}
+		content, err := generateContent("NewAppTemplate", newAppTemplate, app)
+		require.NoError(t, err)
+		require.Equal(t, expNewAppWithAuthors, string(content))
 	})
 	t.Run("WithShortOptionHandling", func(t *testing.T) {
 		app := App{
