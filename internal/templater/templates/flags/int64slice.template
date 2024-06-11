@@ -1,0 +1,21 @@
+&cli.Int64SliceFlag{
+    Name: "{{.Name}}",
+    Usage: "{{.Usage}}",
+    {{- if .Aliases}}
+	Aliases: []string{
+        {{- range $alias := .Aliases}}
+        "{{$alias}}",
+        {{- end}}
+    },
+    {{- end}}
+    {{- if .EnvVars}}
+	EnvVars: []string{
+        {{- range $envVar := .EnvVars}}
+        "{{$envVar}}",
+        {{- end}}
+    },
+    {{- end}}
+	{{- if .Value }}
+    Value: cli.NewInt64Slice({{.Value}}),
+    {{- end}}
+}

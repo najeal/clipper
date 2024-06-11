@@ -20,6 +20,9 @@ var boolFlagTemplate string
 //go:embed templates/flags/int64.template
 var int64FlagTemplate string
 
+//go:embed templates/flags/int64slice.template
+var int64sliceFlagTemplate string
+
 //go:embed templates/flags/string.template
 var stringFlagTemplate string
 
@@ -46,6 +49,7 @@ func GenerateContent(data Root) ([]byte, error) {
 		additionalTemplate{"StringFlagTemplate", stringFlagTemplate},
 		additionalTemplate{"BoolFlagTemplate", boolFlagTemplate},
 		additionalTemplate{"Int64FlagTemplate", int64FlagTemplate},
+		additionalTemplate{"Int64SliceFlagTemplate", int64sliceFlagTemplate},
 		additionalTemplate{"ExitTemplate", exitTemplate},
 	)
 }

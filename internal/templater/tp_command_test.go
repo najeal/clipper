@@ -69,6 +69,11 @@ func TestGenerateCommandTemplate(t *testing.T) {
 					Usage: "size info",
 					Type:  "int64",
 				},
+				{
+					Name:  "ages",
+					Usage: "ages info",
+					Type:  "int64slice",
+				},
 			},
 		}
 		content, err := generateContent("CommandTemplate", commandTemplate, command,
@@ -76,6 +81,7 @@ func TestGenerateCommandTemplate(t *testing.T) {
 			additionalTemplate{"StringFlagTemplate", stringFlagTemplate},
 			additionalTemplate{"BoolFlagTemplate", boolFlagTemplate},
 			additionalTemplate{"Int64FlagTemplate", int64FlagTemplate},
+			additionalTemplate{"Int64SliceFlagTemplate", int64sliceFlagTemplate},
 		)
 		require.NoError(t, err)
 		require.Equal(t, expCommandWithFlagsTemplate, string(content))

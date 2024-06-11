@@ -14,5 +14,9 @@
             Name: "size",
             Usage: "size info",
         },
+        &cli.Int64SliceFlag{
+            Name: "ages",
+            Usage: "ages info",
+        },
     },
 },

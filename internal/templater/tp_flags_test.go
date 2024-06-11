@@ -34,7 +34,26 @@ var expStringFlagNoValue string
 //go:embed test_files/flags/exp_int64.txt
 var expInt64Flag1 string
 
+//go:embed test_files/flags/exp_int64slice.txt
+var expInt64SliceFlag string
+
 func TestGenerateFlagTemplate(t *testing.T) {
+	t.Run("Int64Slice", func(t *testing.T) {
+		t.Run("Complete", func(t *testing.T) {
+			flag := Flag{
+				Name:    "ages",
+				Value:   "25,35,45",
+				Type:    "int64slice",
+				Usage:   "ages to use",
+				Aliases: []string{"a"},
+				EnvVars: []string{"F_AGES"},
+			}
+
+			content, err := generateContent("Int64SliceFlagTemplate", int64sliceFlagTemplate, flag)
+			require.NoError(t, err)
+			require.Equal(t, expInt64SliceFlag, string(content))
+		})
+	})
 	t.Run("Int64", func(t *testing.T) {
 		t.Run("Complete", func(t *testing.T) {
 			flag := Flag{

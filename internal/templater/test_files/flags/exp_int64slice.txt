@@ -1,0 +1,11 @@
+&cli.Int64SliceFlag{
+    Name: "ages",
+    Usage: "ages to use",
+	Aliases: []string{
+        "a",
+    },
+	EnvVars: []string{
+        "F_AGES",
+    },
+    Value: cli.NewInt64Slice(25,35,45),
+}
