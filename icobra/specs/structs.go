@@ -4,9 +4,7 @@ import "gopkg.in/yaml.v3"
 
 type RootApp struct {
 	Name     string    `yaml:"name"`
-	Version  string    `yaml:"version"`
 	Use      string    `yaml:"use"`
-	Action   string    `yaml:"action"`
 	Short    string    `yaml:"short"`
 	Long     string    `yaml:"long"`
 	Runnable bool      `yaml:"runnable"`

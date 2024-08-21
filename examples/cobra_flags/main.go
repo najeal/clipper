@@ -15,7 +15,7 @@ func main() {
 type Service struct{}
 
 func (*Service) Add(cmd *cobra.Command, args []string) {
-	fmt.Fprintln(os.Stdout, "Add command %d!")
+	fmt.Fprintln(os.Stdout, "Add command!")
 }
 
 func (*Service) Complete(cmd *cobra.Command, args []string) {
