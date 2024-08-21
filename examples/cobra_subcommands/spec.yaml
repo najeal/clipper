@@ -1,0 +1,27 @@
+name: SubcommandManager
+use: subcommmand-manager
+short: fight the loneliness!
+long: fight the loneliness!
+commands:
+  - name: Add
+    use: add
+    short: add a task to the list
+    runnable: true
+  - name: Complete
+    use: complete
+    short: complete a task on the list
+    long: complete a task on the long list
+    action: Complete
+    runnable: true
+  - name: Template
+    use: template
+    short: options for task templates
+    commands:
+      - name: TemplateAdd
+        use: add
+        short: add a new template
+        runnable: true
+      - name: TemplateRemove
+        use: remove
+        short: remove an existing template
+        runnable: true
