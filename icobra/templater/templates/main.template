@@ -1,0 +1,10 @@
+{{include "HeaderTemplate" .}}
+package main
+
+import (
+    "{{.ProjectRoot}}/cmd"
+)
+
+func main() {
+    cmd.Execute()
+}

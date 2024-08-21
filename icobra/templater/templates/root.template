@@ -1,0 +1,33 @@
+{{include "HeaderTemplate" .}}
+package cmd
+
+import (
+	"os"
+
+	"github.com/spf13/cobra"
+)
+
+var {{.Command.VarCmd}}Cmd *cobra.Command
+
+type Service interface {
+    {{- range $method_name := .Methods}}
+	{{$method_name}}(cmd *cobra.Command, args []string)
+    {{- end}}
+}
+
+{{include "CommandTemplate" .Command}}
+
+func Execute(svc Service) {
+	New{{.Command.CommandName}}Cmd(svc)
+	addCommands(svc)
+	err := {{.Command.VarCmd}}Cmd.Execute()
+	if err != nil {
+		os.Exit(1)
+	}
+}
+
+func addCommands(svc Service) {
+	{{- range $h := .CommandsHierarchy}}
+	{{$h.Parent}}Cmd.AddCommand(New{{$h.Child}}Cmd(svc))
+	{{- end}}
+}

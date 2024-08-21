@@ -1,0 +1,16 @@
+func New{{.CommandName}}Cmd(svc Service) *cobra.Command {
+    {{.VarCmd}}Cmd = &cobra.Command{
+    	Use:   "{{.Use}}",
+    	Short: "{{.Short}}",
+    	Long:  `{{.Long}}`,
+        {{- if .Run }}
+        Run: func(cmd *cobra.Command, args []string) {
+            svc.{{.CommandName}}(cmd, args)
+        },
+        {{- end }}
+    }
+    {{- range $flag := .Flags}}
+    {{$flag.VarCmd}}Cmd.{{include "FlagTemplate" .}}
+    {{- end}}
+    return {{.VarCmd}}Cmd
+}

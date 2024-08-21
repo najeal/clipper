@@ -1,0 +1,39 @@
+name: SubcommandManager
+use: subcommmand-manager
+short: fight the loneliness!
+long: fight the loneliness!
+flags:
+  - name: lang
+    type: string
+    value: english
+    usage: language for the greeting
+    persistent: true
+commands:
+  - name: Add
+    use: add
+    short: add a task to the list
+    runnable: true
+  - name: Complete
+    use: complete
+    short: complete a task on the list
+    long: complete a task on the long list
+    action: Complete
+    runnable: true
+  - name: Template
+    use: template
+    short: options for task templates
+    commands:
+      - name: TemplateAdd
+        use: add
+        short: add a new template
+        runnable: true
+        flags:
+          - name: number
+            type: int64
+            value: 3
+            usage: number to add
+            shorthand: n
+      - name: TemplateRemove
+        use: remove
+        short: remove an existing template
+        runnable: true

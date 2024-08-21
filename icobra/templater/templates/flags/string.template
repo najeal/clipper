@@ -1,0 +1,1 @@
+StringP("{{.Name}}", "{{.Shorthand}}", "{{.Value}}", "{{.Usage}}")
