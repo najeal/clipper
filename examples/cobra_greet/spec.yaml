@@ -1,5 +1,5 @@
 name: Greet
 short: fight the loneliness!
 long: fight the loneliness!
-usage: greet
+use: greet
 runnable: true
