@@ -28,6 +28,6 @@ func Execute(svc Service) {
 
 func addCommands(svc Service) {
 	{{- range $h := .CommandsHierarchy}}
-	{{$h.Parent}}Cmd.AddCommand(New{{$h.Child}}Command(svc))
+	{{$h.Parent}}Cmd.AddCommand(New{{$h.Child}}Cmd(svc))
 	{{- end}}
 }

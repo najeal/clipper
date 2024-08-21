@@ -80,6 +80,21 @@ func TestGenerateRootFile(t *testing.T) {
 	})
 }
 
+func TestGenerateFlags(t *testing.T) {
+	t.Run("Int64", func(t *testing.T) {
+		flag := Flag{
+			Name:  "age",
+			Type:  "int64",
+			Value: "50",
+			Usage: "indicate people age",
+		}
+		expectedRes := []byte(`Flags().Int64P("age", "", 50, "indicate people age")`)
+		res, err := generateFlagContent(flag)
+		require.NoError(t, err)
+		require.Equal(t, expectedRes, res)
+	})
+}
+
 func TestGenerateCommandFile(t *testing.T) {
 	t.Run("Basic", func(t *testing.T) {
 		cmdData := Command{
@@ -89,6 +104,17 @@ func TestGenerateCommandFile(t *testing.T) {
 			Short:       "create desc",
 			Long:        "create desc",
 			Run:         true,
+			Flags: []Flag{
+				{
+					Name:       "max",
+					Usage:      "indicate max",
+					Type:       "int64",
+					Shorthand:  "m",
+					Value:      "50",
+					Persistent: true,
+					VarCmd:     "configCreate",
+				},
+			},
 		}
 
 		res, err := GenerateCommand(cmdData)

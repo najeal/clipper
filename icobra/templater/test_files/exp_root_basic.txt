@@ -35,7 +35,7 @@ func Execute(svc Service) {
 }
 
 func addCommands(svc Service) {
-	appCmd.AddCommand(NewConfigCommand(svc))
-	appCmd.AddCommand(NewFetchCommand(svc))
-	configCmd.AddCommand(NewConfigCreateCommand(svc))
+	appCmd.AddCommand(NewConfigCmd(svc))
+	appCmd.AddCommand(NewFetchCmd(svc))
+	configCmd.AddCommand(NewConfigCreateCmd(svc))
 }

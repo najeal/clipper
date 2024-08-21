@@ -9,5 +9,8 @@ func New{{.CommandName}}Cmd(svc Service) *cobra.Command {
         },
         {{- end }}
     }
+    {{- range $flag := .Flags}}
+    {{$flag.VarCmd}}Cmd.{{include "FlagTemplate" .}}
+    {{- end}}
     return {{.VarCmd}}Cmd
 }

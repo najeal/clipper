@@ -1,0 +1,1 @@
+BoolP("{{.Name}}", "{{.Shorthand}}", {{.Value}}, "{{.Usage}}")

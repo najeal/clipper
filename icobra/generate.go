@@ -22,8 +22,9 @@ func (*CliGenerator) Generate(inputFile []byte, packageName string) (outputFiles
 		return nil, err
 	}
 	_ = specs
-	rootData := transform(packageName, specs)
-	content, err := templater.GenerateContent(rootData)
+	dataWrapper := transform(packageName, specs)
+	rootData := dataWrapper.RootData
+	content, err := templater.GenerateRoot(rootData)
 	if err != nil {
 		return nil, fmt.Errorf("failed to apply template on specs: %w", err)
 	}
@@ -43,5 +44,25 @@ func (*CliGenerator) Generate(inputFile []byte, packageName string) (outputFiles
 	if err != nil {
 		return nil, fmt.Errorf("cannot write file: %s", err.Error())
 	}
+
+	for _, command := range dataWrapper.Commands {
+		content, err := templater.GenerateCommand(command)
+		if err != nil {
+			return nil, fmt.Errorf("failed to apply template on command spec: %w", err)
+		}
+		formatedContent, err := format.Source(content)
+		if err != nil {
+			return nil, fmt.Errorf("failed to format generated cli command go code: %w", err)
+		}
+		err = os.WriteFile(
+			filepath.Join("cmd", command.CommandName+".go"),
+			formatedContent,
+			os.FileMode(0o755),
+		)
+		if err != nil {
+			return nil, fmt.Errorf("cannot write file: %s", err.Error())
+		}
+	}
+
 	return formatedContent, nil
 }

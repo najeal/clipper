@@ -23,6 +23,23 @@ var mainTemplate string
 //go:embed templates/root.template
 var rootTemplate string
 
+// -- Flag Templates
+
+//go:embed templates/flag.template
+var flagTemplate string
+
+//go:embed templates/flags/bool.template
+var boolFlagTemplate string
+
+//go:embed templates/flags/int64.template
+var int64FlagTemplate string
+
+//go:embed templates/flags/int64slice.template
+var int64SliceFlagTemplate string
+
+//go:embed templates/flags/string.template
+var stringFlagTemplate string
+
 type additionalTemplate struct {
 	templateName    string
 	templateContent string
@@ -38,14 +55,36 @@ func GenerateMain(mainData MainData) ([]byte, error) {
 
 func GenerateRoot(rootData RootData) ([]byte, error) {
 	return generateContent("RootTemplate", rootTemplate, rootData,
-		additionalTemplate{"HeaderTemplate", headerTemplate},
-		additionalTemplate{"CommandTemplate", commandTemplate})
+		append([]additionalTemplate{
+			{"HeaderTemplate", headerTemplate},
+		}, getCommandAdditionalTemplates()...)...)
 }
 
 func GenerateCommand(commandData Command) ([]byte, error) {
 	return generateContent("CommandFileTemplate", commandFileTemplate, commandData,
-		additionalTemplate{"HeaderTemplate", headerTemplate},
-		additionalTemplate{"CommandTemplate", commandTemplate})
+		append([]additionalTemplate{
+			{"HeaderTemplate", headerTemplate},
+		}, getCommandAdditionalTemplates()...)...)
+}
+
+func generateFlagContent(flagData Flag) ([]byte, error) {
+	return generateContent("FlagTemplate", flagTemplate, flagData, []additionalTemplate{
+		{"BoolFlagTemplate", boolFlagTemplate},
+		{"Int64FlagTemplate", int64FlagTemplate},
+		{"Int64SliceFlagTemplate", int64SliceFlagTemplate},
+		{"StringFlagTemplate", stringFlagTemplate},
+	}...)
+}
+
+func getCommandAdditionalTemplates() []additionalTemplate {
+	return []additionalTemplate{
+		{"CommandTemplate", commandTemplate},
+		{"FlagTemplate", flagTemplate},
+		{"BoolFlagTemplate", boolFlagTemplate},
+		{"Int64FlagTemplate", int64FlagTemplate},
+		{"Int64SliceFlagTemplate", int64SliceFlagTemplate},
+		{"StringFlagTemplate", stringFlagTemplate},
+	}
 }
 
 func generateContent(templateName, templateText string, data interface{}, optTemplates ...additionalTemplate) ([]byte, error) {

@@ -2,9 +2,6 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/spf13/cobra"
 )
 
@@ -19,5 +16,6 @@ func NewConfigCreateCmd(svc Service) *cobra.Command {
             svc.ConfigCreate(cmd, args)
         },
     }
+    configCreateCmd.PersistentFlags().Int64P("max", "m", 50, "indicate max")
     return configCreateCmd
 }
