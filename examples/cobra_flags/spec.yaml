@@ -8,6 +8,11 @@ flags:
     value: english
     usage: language for the greeting
     persistent: true
+  - name: ports
+    type: int64Slice
+    value: 80,8080,3000
+    usage: possible ports
+    persistent: true
 commands:
   - name: Add
     use: add
