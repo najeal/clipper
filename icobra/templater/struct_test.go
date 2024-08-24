@@ -19,6 +19,9 @@ var expectedRootRun string
 //go:embed test_files/exp_command_file_basic.txt
 var expectedCommandFileBasic string
 
+//go:embed test_files/exp_command_file_with_flags.txt
+var expectedCommandFileWithFlags string
+
 func TestGenerateMain(t *testing.T) {
 	mainData := MainData{
 		ProjectRoot: "/my-project",
@@ -120,5 +123,67 @@ func TestGenerateCommandFile(t *testing.T) {
 		res, err := GenerateCommand(cmdData)
 		require.NoError(t, err)
 		require.Equal(t, expectedCommandFileBasic, string(res))
+	})
+
+	t.Run("WithFlags", func(t *testing.T) {
+		cmdData := Command{
+			CommandName: "ConfigCreate",
+			VarCmd:      "configCreate",
+			Use:         "create",
+			Short:       "create desc",
+			Long:        "create desc",
+			Run:         true,
+			Flags: []Flag{
+				{
+					Name:       "name",
+					Usage:      "naming",
+					Type:       "string",
+					Shorthand:  "n",
+					Value:      "myname",
+					Persistent: false,
+					VarCmd:     "configCreate",
+				},
+				{
+					Name:       "ports",
+					Usage:      "possible ports",
+					Type:       "int64Slice",
+					Shorthand:  "p",
+					Value:      "80,8080,3000",
+					Persistent: false,
+					VarCmd:     "configCreate",
+				},
+				{
+					Name:       "validation",
+					Usage:      "enable validation",
+					Type:       "bool",
+					Shorthand:  "v",
+					Value:      "true",
+					Persistent: false,
+					VarCmd:     "configCreate",
+				},
+				{
+					Name:       "min",
+					Usage:      "indicate min",
+					Type:       "int",
+					Shorthand:  "",
+					Value:      "10",
+					Persistent: false,
+					VarCmd:     "configCreate",
+				},
+				{
+					Name:       "max",
+					Usage:      "indicate max",
+					Type:       "int64",
+					Shorthand:  "m",
+					Value:      "50",
+					Persistent: true,
+					VarCmd:     "configCreate",
+				},
+			},
+		}
+
+		res, err := GenerateCommand(cmdData)
+		require.NoError(t, err)
+		require.Equal(t, expectedCommandFileWithFlags, string(res))
 	})
 }
