@@ -2,5 +2,6 @@
 Flags().
 {{- if eq .Type "string"}}{{include "StringFlagTemplate" . }}{{end}}
 {{- if eq .Type "bool"}}{{include "BoolFlagTemplate" . }}{{end}}
+{{- if eq .Type "int"}}{{include "IntFlagTemplate" . }}{{end}}
 {{- if eq .Type "int64"}}{{include "Int64FlagTemplate" . }}{{end}}
 {{- if eq .Type "int64Slice"}}{{include "Int64SliceFlagTemplate" . }}{{end}}

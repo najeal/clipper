@@ -31,7 +31,15 @@ func (*Service) TemplateAdd(cmd *cobra.Command, args []string) {
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Fprintf(os.Stdout, "TemplateAdd command %d %s!", number, lang)
+	fmt.Fprintf(os.Stdout, "TemplateAdd command %d %s!\n", number, lang)
+	ports, err := cmd.Flags().GetInt64Slice("ports")
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Fprintf(os.Stdout, "possible ports:\n")
+	for _, port := range ports {
+		fmt.Fprintf(os.Stdout, "%d\n", port)
+	}
 }
 
 func (*Service) TemplateRemove(cmd *cobra.Command, args []string) {

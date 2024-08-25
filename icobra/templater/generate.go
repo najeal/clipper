@@ -37,6 +37,9 @@ var int64FlagTemplate string
 //go:embed templates/flags/int64slice.template
 var int64SliceFlagTemplate string
 
+//go:embed templates/flags/int.template
+var intFlagTemplate string
+
 //go:embed templates/flags/string.template
 var stringFlagTemplate string
 
@@ -73,6 +76,7 @@ func generateFlagContent(flagData Flag) ([]byte, error) {
 		{"Int64FlagTemplate", int64FlagTemplate},
 		{"Int64SliceFlagTemplate", int64SliceFlagTemplate},
 		{"StringFlagTemplate", stringFlagTemplate},
+		{"IntFlagTemplate", intFlagTemplate},
 	}...)
 }
 
@@ -84,6 +88,7 @@ func getCommandAdditionalTemplates() []additionalTemplate {
 		{"Int64FlagTemplate", int64FlagTemplate},
 		{"Int64SliceFlagTemplate", int64SliceFlagTemplate},
 		{"StringFlagTemplate", stringFlagTemplate},
+		{"IntFlagTemplate", intFlagTemplate},
 	}
 }
 

@@ -23,6 +23,7 @@ func NewSubcommandManagerCmd(svc Service) *cobra.Command {
 		Long:  `fight the loneliness!`,
 	}
 	subcommandManagerCmd.PersistentFlags().StringP("lang", "", "english", "language for the greeting")
+	subcommandManagerCmd.PersistentFlags().Int64SliceP("ports", "", []int64{80, 8080, 3000}, "possible ports")
 	return subcommandManagerCmd
 }
 
